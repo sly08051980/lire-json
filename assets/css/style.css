@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+table{
+    border: 1px solid red;
+    width: 80%;
+}
+tr,td{
+    border: 1px solid red;
+}
