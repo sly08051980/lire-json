@@ -6,7 +6,7 @@ let collectionRecord="";
 let binRecord="";
 let data=[];
 const table = document.querySelector("table");
-const ligneth=document.createElement("th");
+
 
 readCollection();
 
@@ -62,31 +62,33 @@ console.log("dynamicName" ,dynamicName);
 dynamicName.pop();
 console.log("dynamicName 2:" ,dynamicName);
 
+let myString
+let thead =document.createElement("thead");
+table.appendChild(thead);
+
 for (let index = 0; index < dynamicName.length; index++) {
     
     let test = dynamicName[index];
-
    
-        const cellule = document.createElement("td");
+        const cellule = document.createElement("th");
         cellule.innerHTML = test;
-        ligneth.appendChild(cellule);
+        thead.appendChild(cellule);
+    for (let index = 0; index < dataBinRecord.length; index++) {
+
+        const ligne = document.createElement("td");
+         myString =JSON.stringify(dataBinRecord[index]);
+      
         
+        ligne.innerHTML=dataBinRecord[index].innerHTML;
     
-    table.appendChild(ligneth);   
+        table.appendChild(ligne);
+
+    
+    
+    }
 }
 
-for (let index = 0; index < dataBinRecord.length; index++) {
-    const lignetr=dataBinRecord[index];
-    console.log("lignete : ",lignetr);
-    
-    for (let index = 0; index < dataBinRecord.length; index++) {
-        const cel = document.createElement("td");
-        cel.innerHTML=lignetr
-        ligneth.appendChild(cel)
-        
-    }
-    
-}
+console.log("my string =",myString);
 
 document.body.appendChild(table);
 }
