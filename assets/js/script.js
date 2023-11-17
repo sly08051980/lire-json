@@ -62,34 +62,65 @@ console.log("dynamicName" ,dynamicName);
 dynamicName.pop();
 console.log("dynamicName 2:" ,dynamicName);
 
-let myString
+
 let thead =document.createElement("thead");
 table.appendChild(thead);
 
 for (let index = 0; index < dynamicName.length; index++) {
     
-    let test = dynamicName[index];
+    let theadName= dynamicName[index];
    
         const cellule = document.createElement("th");
-        cellule.innerHTML = test;
+        cellule.innerHTML = theadName;
+        cellule.setAttribute("class",theadName)
         thead.appendChild(cellule);
-    for (let index = 0; index < dataBinRecord.length; index++) {
 
-        const ligne = document.createElement("td");
-         myString =JSON.stringify(dataBinRecord[index]);
-      
-        
-        ligne.innerHTML=dataBinRecord[index].innerHTML;
-    
-        table.appendChild(ligne);
-
-    
-    
-    }
 }
 
-console.log("my string =",myString);
+
+
+let placeHolder = document.querySelector("#data-output");
+let tableHtml ="";
+for (let index = 0; index < dataBinRecord.length; index++) {
+    
+    
+
+for(let dataBinRecords of dataBinRecord[index]){
+ 
+    tableHtml += `
+        <tr>
+        <td class="columnID">${dataBinRecords.id}</td>
+        <td>${dataBinRecords.sir_miss}</td>
+        <td>${dataBinRecords.name}</td>
+        <td>${dataBinRecords.first_name}</td>
+        <td>${dataBinRecords.email}</td>
+        <td>${dataBinRecords.street}</td>
+        <td>${dataBinRecords.city}</td>
+        <td>${dataBinRecords.postal_code}</td>
+        </tr>
+    `;
+
+
+}
+placeHolder.innerHTML=tableHtml;
+
+
+}
 
 document.body.appendChild(table);
+
+table.addEventListener("click", function (event) {
+    const clickedRow = event.target.closest("tr");
+
+    if (clickedRow) {
+
+        const cells = clickedRow.querySelectorAll("td");
+        const rowData = Array.from(cells).map(cell => cell.innerText);
+
+        console.log("Click:", rowData.join(", "));
+    }
+});
+
+
 }
 

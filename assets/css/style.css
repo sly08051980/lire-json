@@ -3,10 +3,35 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 table{
-    border: 1px solid red;
+    border: 1px solid black;
     width: 80%;
+
 }
-tr,td{
-    border: 1px solid red;
+
+
+table{
+border-collapse: collapse;
+border: 2px solid midnightblue;
+}
+thead th{
+    background-color: midnightblue;
+    color: white;
+    text-align: left;
+}
+ th,td {
+    padding: 15px 20px;
+}
+tbody tr,td,th{
+    border: 1px solid #ddd;
+}
+
+
+tr:hover{
+    background-color: blue;
+    color: white;
+}
+.id, .columnID{
+    display: none;
 }
